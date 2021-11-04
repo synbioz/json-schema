@@ -48,6 +48,10 @@ module JSON
         }
         type
       end
+
+      def self.validate_on_false?
+        true
+      end
     end
   end
 end

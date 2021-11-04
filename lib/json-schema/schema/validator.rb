@@ -21,7 +21,10 @@ module JSON
 
       def validate(current_schema, data, fragments, processor, options = {})
         current_schema.schema.each do |attr_name,attribute|
-          if @attributes.has_key?(attr_name.to_s)
+          # Added: don't try to validate if
+          # - Attribute is false and does not needs to validate anything (eg: uniqueItems) some still needs validation (eg: additionalProperties)
+          # - Attribute is nil and it makes crash the validation (eg: divisibleBy). This should fixed on mountapi side
+          if @attributes.has_key?(attr_name.to_s) && (attribute != false || @attributes[attr_name.to_s].validate_on_false?) && !attribute.nil?
             @attributes[attr_name.to_s].validate(current_schema, data, fragments, processor, self, options)
           end
         end

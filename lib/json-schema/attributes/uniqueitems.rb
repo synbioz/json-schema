@@ -11,6 +11,10 @@ module JSON
           validation_error(processor, message, fragments, current_schema, self, options[:record_errors])
         end
       end
+
+      def self.validate_on_false?
+        false
+      end
     end
   end
 end
