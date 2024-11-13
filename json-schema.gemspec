@@ -2,15 +2,15 @@ require 'yaml'
 
 version_yaml = YAML.load(File.open(File.expand_path('../VERSION.yml', __FILE__)).read)
 version = "#{version_yaml['major']}.#{version_yaml['minor']}.#{version_yaml['patch']}"
-gem_name = "json-schema"
+gem_name = "json-schema-ouidou"
 
 Gem::Specification.new do |s|
   s.name = gem_name
   s.version = version
-  s.authors = ["Kenny Hoxworth", "Vox Pupuli"]
-  s.email = "voxpupuli@groups.io"
-  s.homepage = "http://github.com/voxpupuli/json-schema/"
-  s.summary = "Ruby JSON Schema Validator"
+  s.authors = ["Kenny Hoxworth", "Vox Pupuli", "Hugo Fabre"]
+  s.email = "bot@ouidou.fr"
+  s.homepage = "https://github.com/synbioz/json-schema"
+  s.summary = "Ruby JSON Schema Validator, with custom fix for ouidou's needs"
   s.files = Dir[ "lib/**/*", "resources/*.json" ]
   s.require_path = "lib"
   s.extra_rdoc_files = ["README.md","LICENSE.md"]
